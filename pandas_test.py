@@ -1,5 +1,9 @@
 import pandas as pd
 import datetime
+import random
+l=['A','B','C']
+random.shuffle(l)
+print(l)
 # df=pd.DataFrame(index=[], columns=['timestamp','A','B','C']).fillna(0)
 # df['timestamp']=pd.to_datetime(df['timestamp'])
 # df=df.set_index(['timestamp'])
@@ -37,8 +41,7 @@ class PyLogger:
 		return self.df.loc[t,c]
 
 	def agg(self, start_time, end_time , freq):
-		agg=self.df.resample(freq).sum()
-		print(agg)
+		agg=self.df.fillna(0).resample(freq).sum()
 		return agg.loc[start_time:end_time]
 
 o=PyLogger()
@@ -48,4 +51,4 @@ o.set("20220102123105", 'B', 2)
 o.set("20220103123105", 'C', 3)
 
 print(o.get("20220101123105", 'A'))
-print(o.agg("20220101","20220103", '60min'))
+print(o.agg("20210101","20230103", '1H'))
