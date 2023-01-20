@@ -1,14 +1,15 @@
-from queue import PriorityQueue
 from collections import Counter
+import heapq
 jobs = [(1, 'eat'),(1, 'eat'),(1, 'eat'),(1, 'eat'),(1, 'eat'), (2, 'code'), (3, 'sleep')]
 ht=Counter()
-pq=PriorityQueue()
+a=[]
+hp=heapq.heapify(a)
 for task_id, username in jobs:
 	ht[username]+=1
-	pq.put((ht[username], task_id, username))
+	heapq.heappush(a, (ht[username], task_id, username))
 
 for _ in jobs:
-	t=pq.get()
+	t=heapq.heappop(a)
 	print(t[1])
 	ht[t[2]]-=1
 
