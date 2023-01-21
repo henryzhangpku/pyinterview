@@ -1,6 +1,6 @@
 from queue import PriorityQueue
 from collections import Counter
-jobs = [(1, 'eat'),(1, 'eat'),(1, 'eat'),(1, 'eat'),(1, 'eat'), (2, 'code'), (3, 'sleep')]
+jobs = [(1, 'tom'),(1, 'tom'),(1, 'tom'),(1, 'tom'),(1, 'tom'), (2, 'jack'),(2, 'jack'), (3, 'marry'), (3, 'marry')]
 ht=Counter()
 pq=PriorityQueue()
 for task_id, username in jobs:
